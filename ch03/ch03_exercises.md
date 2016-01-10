@@ -24,5 +24,5 @@ The procedure doesn't account for negative values of `n`, so if (e.g.) passed `n
 ### Problem 3.4
 **Write two procedures for producing the nth Fibonacci number when the number `n` is given as input. In one procedure, use a `for` loop and produce the answer using iteration. In the second version, use recursion. The input argument and return value should be of type `long`.**
 
- ### Problem 3.5
- **Write a `main` to test the Fibonacci procedures you created in Exercise 3.4. Use it to evaluate F_20, F_30, and F_40. You should find that one version is much faster than the other. Explain why. Include an analysis of how many times the recursive version of your procedure gets called in order to compute F_n.**
+### Problem 3.5
+**Write a `main` to test the Fibonacci procedures you created in Exercise 3.4. Use it to evaluate F_20, F_30, and F_40. You should find that one version is much faster than the other. Explain why. Include an analysis of how many times the recursive version of your procedure gets called in order to compute F_n.**
