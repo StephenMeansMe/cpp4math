@@ -68,7 +68,7 @@ img {
 <div id="problem-3.1" class="section level3">
 <h3>Problem 3.1</h3>
 <p><em>Use the Euclidean algorithm to find <code>d = gcd(51, 289)</code> and to find integers <code>x</code> and <code>y</code> so that <code>d = 51 * x + 289 * y</code>.</em></p>
-<p>The greatest common divisor of 51 and 289 is <code>d</code>. The pair <code>(x, y)</code> was found to be <code>(x, y)</code>.</p>
+<p>The greatest common divisor of 51 and 289 is <code>17</code>. We have that <code>17 = x * 51 + y * 289</code> for all pairs <code>(x, y) = (6 + k * 17, -1 - k * 3)</code> where <code>k</code> is any integer. Note that <code>51 = 17 * 3</code> and <code>289 = 17 * 17</code>.</p>
 </div>
 <div id="problem-3.2" class="section level3">
 <h3>Problem 3.2</h3>
@@ -91,6 +91,7 @@ img {
 <div id="problem-3.5" class="section level3">
 <h3>Problem 3.5</h3>
 <p><em>Write a <code>main</code> to test the Fibonacci procedures you created in Exercise 3.4. Use it to evaluate F_20, F_30, and F_40. You should find that one version is much faster than the other. Explain why. Include an analysis of how many times the recursive version of your procedure gets called in order to compute F_n.</em></p>
+<p>Iterative is much faster than recursive. This is because the recursive algorithm calls the procedure F(n) times. F(0) and F(1) each take 1 call. F(2) takes F(0) + F(1) = 2 calls. F(3) = F(2) + F(1) = 2 + 1 = 3 calls. F(4) = F(3) + F(2) = 3 + 2 = 5 calls, and so on.</p>
 </div>
 <div id="problem-3.6" class="section level3">
 <h3>Problem 3.6</h3>
