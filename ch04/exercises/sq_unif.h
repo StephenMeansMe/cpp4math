@@ -1,5 +1,5 @@
 /*
- * ex03_07.h
+ * sq_unif.h
  * 
  * Copyright 2016 Stephen <me@stephenmeansme.com>
  * 
@@ -21,9 +21,9 @@
  * 
  */
 
-#ifndef XY2POLAR_H
-#define XY2POLAR_H
+#ifndef SQ_UNIF_H
+#define SQ_UNIF_H
 
-void xy2polar(float x, float y, float& r, float& t);
+double sq_unif();
 
 #endif

@@ -21,12 +21,34 @@
  * 
  */
 
-#include "one_zero_mult.h"
-
+#include <ch03/exercises/one_zero_mult.h>
 #include <cmath>
 #include <iostream>
 
-long one_zero_mult(int n)
+static long quick_pow10( int n )
+{
+	static long pow10[ 10 ] =
+	{
+		1, 10, 100, 1000, 100000,
+		1000000, 10000000, 100000000, 1000000000, 10000000000
+	};
+
+	return pow10[ n ];
+
+}
+
+static long quick_trinum( int n )
+{
+	static long trinum[ 10 ] =
+	{
+		1, 3, 6, 10, 15, 21, 28, 36, 45, 55
+	};
+
+	return trinum[ n ];
+
+}
+
+long long one_zero_mult( long n )
 {
 	/*
 	 * Given a positive integer, returns the smallest multiple with base-10
@@ -43,47 +65,37 @@ long one_zero_mult(int n)
 	 *       last r digits are all 0, so start with 10^{r+1}
 	 */
 
-	 int i_max = 10;
+	 long      mod = 1;
+	 long long m = 0;
+	 int       i_max = 10;
 	 
-	 int* ones = new int [i_max]; 
-	 int** sums;
-	 sums = new int* [i_max];
-	 sums[0] = new int;
-	 sums[0][0] = 10 % n;
+	 int*  ones = new int [ i_max ]; 
+	 int** sums = new int* [ i_max ];
+	       sums[0]    = new int;
+	       sums[0][0] = 1;
 
-	 for (int i = 1; i < i_max; i++)
+	 for ( int i = 1; i < i_max; i++ )
 	 {
-		 sums[i] = new int[];
+		 sums[ i ] = new int[ quick_trinum( i ) ];
+		 mod       = ( mod * 3 ) % n;
 		 
-		 for(int j = 0; j < quick_trinum(i-1); j++)
+		 for( int j = 0; j < quick_trinum( i ); j++ )
 		 {
-			
+			if( j < quick_trinum( i - 1 ) )
+			{
+				sums[ i ][ j ] = sums[ i - 1 ][ j ];
+			} else if( j == quick_trinum( i - 1 ) ) {
+				sums[ i ][ j ] = mod;
+			} else {
+				sums[ i ][ j ] = ( sums[ i - 1 ][ j ] + mod ) % n;
+			}
 		 }
 	 }
-	 for(int k = i_max - 1; k > 0; k--)
+	 
+	 for( int k = i_max - 1; k > 0; k-- )
 	 {
-		 delete[] sums[k];
+		 delete[] sums[ k ];
 	 }
+	 
 	 return m;
-}
-
-static long quick_pow10(int n)
-{
-	static long pow10[10] = {
-		1, 10, 100, 1000, 100000,
-		1000000, 10000000, 100000000, 1000000000, 10000000000
-	};
-
-	return pow10[n];
-
-}
-
-static long quick_trinum(int n)
-{
-	static long trinum[10] = {
-		1, 3, 6, 10, 15, 21, 28, 36, 45, 55
-	};
-
-	return trinum[n];
-
 }

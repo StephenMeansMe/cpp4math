@@ -24,17 +24,14 @@
 #ifndef ZETA2SUMS_H
 #define ZETA2SUMS_H
 
-/**
- * Approximates zeta(2) = pi^2 / 6 by summing reciprocal squares:
- * f(N) = sum_{k=1}^N 1/k^2
- *
- * NOTE: Will print an error and return 0 if N is zero or negative.
- *
- * @param N the number of summands
- * @return The approximate value of zeta(2)
- */
+float zeta2sum_fwd	//! \fn float zeta2sum_fwd
+(					//! \brief Approximates zeta(2) by forward-summation.
+		long N		//! \param N the number of summands
+);
 
-float zeta2sum_fwd(long N);
-float zeta2sum_rev(long N);
+float zeta2sum_rev	//! \fn float zeta2sum_rev
+(					//! \brief Approximates zeta(2) by reverse-summation.
+		long N		//! \param N the number of summands
+);
 
 #endif

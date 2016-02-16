@@ -21,7 +21,6 @@
  * 
  */
 
-
 #include <iostream>
 
 /**
@@ -34,7 +33,7 @@ int lcg()
 	const long a = 17;
 	const long b = 3;
 	const long c = 64;
-	state = (a * state + b) % c;
+	state = ( a * state + b ) % c;
 	return state;
 }
 
@@ -45,19 +44,18 @@ int lcg()
 int main()
 {
 	std::cout << "Values modulo 2: ";
-	for (int k = 0; k < 20; k++)
+	for( int k = 0; k < 20; k++ )
 	{
 		std::cout << lcg() % 2 << " ";
 	}
 	std::cout << "\n";
 
 	std::cout << "Values modulo 4: ";
-	for (int k = 0; k < 20; k++)
+	for( int k = 0; k < 20; k++ )
 	{
 		std::cout << lcg() % 4 << " ";
 	}
 	std::cout << "\n";
-
 
 	return 0;
 }

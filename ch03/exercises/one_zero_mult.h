@@ -25,8 +25,10 @@
 #ifndef ONE_ZERO_MULT_H
 #define ONE_ZERO_MULT_H
 
-long one_zero_mult(int n);
-static long quick_pow10(int n);
+long one_zero_mult
+(
+		int n
+);
 
 #endif
 

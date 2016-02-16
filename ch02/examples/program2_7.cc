@@ -1,5 +1,5 @@
 /*
- * fibonacci_recur.cc
+ * program2_7.cc
  * 
  * Copyright 2016 Stephen <me@stephenmeansme.com>
  * 
@@ -21,16 +21,34 @@
  * 
  */
 
-#include "fibonacci_recur.h"
 #include <iostream>
+#include <complex>
 
-long fibonacci_recur(long N) {
-	if (N < 0) {
-		std::cerr << "Warning: Index was negative!\n";
-		return -1;
-	} else if ((N == 0) or (N == 1)) {
-		return 1;
-	} else {
-		return fibonacci_recur(N - 1) + fibonacci_recur(N - 2);
-	}
+/*!
+ * A program to illustrate the use of complex numbers.
+ */
+
+ typedef complex<double> C;
+
+int main()
+{
+	C x( 3, 4 );   // define x = 3 + 4*i
+	C z;           // declare z to be complex
+	z = C( 2, 7 ); // assign z = 2 + 7*i
+	C i( 0, 1 );   // define i = sqrt(-1)
+
+	std::cout << "z = " << z << '\n';
+	std::cout << "x = " << x << '\n';
+	std::cout << "z + x = " << z + x << '\n';
+	std::cout << "z * x = " << z * x << '\n';
+	std::cout << "z / x = " << z / x << '\n';
+
+	z = 5.0 - 4.0 * i;
+	std::cout << "Now z = " << z << '\n';
+
+	std::cout << "The real part of z is " << z.real()
+	     << " and the imaginary part is " << z.imag() << '\n';
+	     
+	return 0;
 }
+

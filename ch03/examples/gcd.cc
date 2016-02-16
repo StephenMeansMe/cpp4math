@@ -22,25 +22,27 @@
  */
 
 
-#include "gcd.h"
+#include <ch03/examples/gcd.h>
 #include <iostream>
 
-long gcd(long a, long b) {
+long gcd( long a, long b )
+{
 
 	// if a and b are both zero, print an error and return 0
-	if( (a == 0) && (b == 0) ) {
+	if( (a == 0) && (b == 0) )
+	{
 		std::cerr << "WARNING: gcd called with both arguments equal to zero.\n";
 	}
 	
 	// make sure a and b are both non-negative
-	if (a < 0) {
+	if ( a < 0 )
+	{
 		a = -a;
 	}
-	if (b < 0) {
+	if ( b < 0 )
+	{
 		b = -b;
 	}
-
-	long new_a, new_b;
 
 	/*
 	 * We use the fact that gcd(a, b) = gcd(b, c) where c = a mod b. Note
@@ -49,7 +51,11 @@ long gcd(long a, long b) {
 	 * and the loop will exit with a == 0, which is what we want.
 	 */
 
-	while (b != 0) {
+	long new_a;
+	long new_b;
+
+	while( b != 0 )
+	{
 		new_a = b;
 		new_b = a % b;
 		a = new_a;
@@ -86,31 +92,36 @@ long gcd(long a, long b) {
 	
 }
 
-long gcd(long a, long b, long& x, long& y)
+long gcd( long a, long b, long& x, long& y )
 {
 	long d; // the final gcd
 
 	//in case b = 0, we have d = |a|, x = 1 or -1, y arbitrary (say 0)
-	if (b == 0) {
-		if (a < 0) {
+	if( b == 0 )
+	{
+		if( a < 0 )
+		{
 			d = -a;
 			x = -1;
 			y = 0;
 		}
-		else {
+		else
+		{
 			d = a;
 			x = 1;
 			y = 0;
 		}
 		return d;
 	}
-	if (b < 0) {
-		d = gcd(a, -b, x, y);
+	if( b < 0 )
+	{
+		d = gcd( a, -b, x, y );
 		y = -y;
 		return d;
 	}
-	if (a < 0) {
-		d = gcd(-a, b, x, y);
+	if( a < 0 )
+	{
+		d = gcd( -a, b, x, y );
 		x = -x;
 		return d;
 	}
@@ -119,9 +130,10 @@ long gcd(long a, long b, long& x, long& y)
 	long aa = b;
 	long bb = a % b;
 	long qq = a / b;
-	long xx, yy;
+	long xx;
+	long yy;
 
-	d = gcd(aa, bb, xx, yy);
+	d = gcd( aa, bb, xx, yy );
 
 	x = yy;
 	y = xx - qq * yy;

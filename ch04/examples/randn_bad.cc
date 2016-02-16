@@ -22,18 +22,22 @@
  */
 
 #include <cmath>
-#include "uniform.h"
+#include <ch04/examples/uniform.h>
 
 double randn()
 {
-	double x, y, r;
+	double x;
+	double y;
+	double r;
+	
 	do
 	{
-		x = unif(-1.0, 1.0);
-		y = unif(-1.0, 1.0);
-		r = x*x + y*y;
-	} while (r >= 1.0)
-	double mu = sqrt(-2.0 * log(r) / r);
+		x = unif( -1.0, 1.0 );
+		y = unif( -1.0, 1.0 );
+		r = x * x + y * y;
+	}
+	while( r >= 1.0 );
+	double mu = sqrt( -2.0 * log( r ) / r );
 
 	return mu * x;
 }

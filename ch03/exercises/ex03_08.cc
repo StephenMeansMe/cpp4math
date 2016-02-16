@@ -21,11 +21,10 @@
  * 
  */
 
-
 #include <iostream>
-#include "one_zero_mult.h"
+#include <ch03/exercises/one_zero_mult.h>
 
-int main(int argc, char **argv)
+int main()
 {
 	int n_1 = 9;
 	std::cout << "The smallest multiple of " << n_1
@@ -37,4 +36,3 @@ int main(int argc, char **argv)
 			  << one_zero_mult(n_2) << "\n";
 	return 0;
 }
-

@@ -1,5 +1,5 @@
 /*
- * fibonacci_iter.h
+ * program2_2.cc
  * 
  * Copyright 2016 Stephen <me@stephenmeansme.com>
  * 
@@ -21,17 +21,19 @@
  * 
  */
 
-#ifndef FIBONACCI_ITER_H
-#define FIBONACCI_ITER_H
+#include <iostream>
 
-/**
- * Generates the Nth Fibonacci number iteratively:
- * F_n = F_n-1 + F_n-2 for n >= 2, with F_0 = F_1 = 1.
- *
- * @param N the index of the desired Fibonacci number.
- * @return The Nth number in the Fibonacci sequence.
+/*!
+ * A program to illustrate what happens when large integers
+ * are multiplied together.
  */
 
-long fibonacci_iter(long N);
+int main()
+{
+	int million = 1000000;
+	int trillion = million * million;
+	std::cout << "According to this computer, " << million << " squared is "
+			  << trillion << ".\n";
+	return 0;
+}
 
-#endif

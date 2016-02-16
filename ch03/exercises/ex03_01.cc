@@ -21,10 +21,10 @@
  * 
  */
 
-#include "src/gcd.h"
+#include <ch03/examples/gcd.h>
 #include <iostream>
 
-int main(int argc, char **argv)
+int main()
 {
 	long a = 51;
 	long b = 289;
@@ -32,7 +32,8 @@ int main(int argc, char **argv)
 	long x = 6;
 	long y = -1;
 
-	std::cout << "The greatest common divisor of " << a << " and " << b << " is " << c << ";\n";
+	std::cout << "The greatest common divisor of "
+	          << a << " and " << b << " is " << c << ";\n";
 	std::cout << "We have that "
 			  << gcd(a, b, x, y) << " = " << a << "*" << x << " + "
 										  << b << "*" << y << "\n";

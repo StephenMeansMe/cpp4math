@@ -1,5 +1,5 @@
 /*
- * polar2xy.cc
+ * program2_6.cc
  * 
  * Copyright 2016 Stephen <me@stephenmeansme.com>
  * 
@@ -21,18 +21,22 @@
  * 
  */
 
-#include "polar2xy.h"
+
 #include <iostream>
 #include <cmath>
 
-void polar2xy(float r, float t, float& x, float& y)
-{
-	if (r < 0) {
-		std::cerr << "Warning: Radius cannot be negative. Setting r = 0.\n";
-		r = 0;
-	}
+/**
+ * Which is larger, pi to the e or e to the pi? We calculate both to
+ * find out.
+ */
 
-	x = r * cos(t);
-	y = r * sin(t);
+int main()
+{
+	double e  = exp( 1.0 );
+	double pi = M_PI;
+
+	std::cout << "e to the pi is " << exp( pi )    << "\n";
+	std::cout << "pi to the e is " << pow( pi, e ) << "\n";
 	
+	return 0;
 }

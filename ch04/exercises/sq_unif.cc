@@ -1,5 +1,5 @@
 /*
- * xy2polar.cc
+ * sq_unif.cc
  * 
  * Copyright 2016 Stephen <me@stephenmeansme.com>
  * 
@@ -21,26 +21,23 @@
  * 
  */
 
-#include "xy2polar.h"
+#include <ch04/exercises/sq_unif.h>
 #include <cmath>
+#include <ch04/examples/uniform.h>
 
-void xy2polar(float x, float y, float& r, float& t)
+double sq_unif()
 {
-	if ((x == 0) and (y == 0)) {
-		r = 0;
-		t = 0;
-	} else if ((x == 0) and (y != 0)) {
-		t = ((y > 0) - (y < 0)) * M_PI / 2;
-		r = fabsf(y);
-	} else if ((x != 0) and (y == 0)) {
-		if (x < 0) {
-			t = M_PI;
-		} else {
-			t = 0;
-		}
-		r = fabsf(x);
-	} else {
-		r = sqrtf(x * x + y * y);
-		t = atan2f(x, y);
-	}
+	seed();
+	double x1  = unif();
+	double x2  = unif();
+	
+	double y1  = unif();
+	double y2  = unif();
+
+	double d1  = x1 - x2;
+	double d2  = y1 - y2;
+
+	double len = sqrt( d1 * d1 + d2 * d2 );	
+	return len;
 }
+

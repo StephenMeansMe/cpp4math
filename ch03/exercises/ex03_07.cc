@@ -21,27 +21,31 @@
  * 
  */
 
-#include "src/polar2xy.h"
-#include "src/xy2polar.h"
 #include <iostream>
 #include <cmath>
+#include <ch03/exercises/polar_conv.h>
 
-int main(int argc, char **argv)
+int main()
 {
 	// TESTING POLAR-TO-(X,Y)
 
-	float x1, y1, r1, t1;
-	r1 = 1.0;
-	t1 = M_PI / 4;
-	polar2xy(r1, t1, x1, y1);
+	float x1;
+	float y1;
+	float r1 = 1.0;
+	float t1 = M_PI / 4.0;
+
+	polar2xy( r1, t1, x1, y1 );
 	std::cout << "Polar form: (" << r1 << ", " << t1 << ");\n"
 			  << "(x,y) form: (" << x1 << ", " << y1 << ").\n";
 
 	// TESTING (X,Y)-TO-POLAR
-	float x2, y2, r2, t2;
-	x2 = - sqrtf(3.0) / 2.0;
-	y2 = 1.0 / 2.0;
-	xy2polar(x2, y2, r2, t2);
+
+	float x2 = -sqrtf(3.0) / 2.0;
+	float y2 = 0.5;
+	float r2;
+	float t2;
+	
+	xy2polar( x2, y2, r2, t2 );
 	std::cout << "(x,y) form: (" << x2 << ", " << y2 << ").\n"
 			  << "Polar form: (" << r2 << ", " << t2 << ");\n";
 	

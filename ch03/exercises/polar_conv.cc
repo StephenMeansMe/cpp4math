@@ -1,5 +1,5 @@
 /*
- * fibonacci_iter.h
+ * polar_conv.cc
  * 
  * Copyright 2016 Stephen <me@stephenmeansme.com>
  * 
@@ -21,17 +21,56 @@
  * 
  */
 
-#ifndef FIBONACCI_RECUR_H
-#define FIBONACCI_RECUR_H
+#include <ch03/exercises/polar_conv.h>
+#include <iostream>
+#include <cmath>
 
-/**
- * Generates the Nth Fibonacci number using recursion:
- * F_n = F_n-1 + F_n-2 for n >= 2, with F_0 = F_1 = 1.
- *
- * @param N the index of the desired Fibonacci number.
- * @return The Nth number in the Fibonacci sequence.
- */
+void xy2polar( float  x,
+			   float  y,
+			   float& r,
+		       float& t )
+{
+	if( ( x == 0 ) and ( y == 0 ) )
+	{
+		r = 0;
+		t = 0;
+	}
+	else if( ( x == 0 ) and ( y != 0 ) )
+	{
+		t = ( ( y > 0 ) - ( y < 0 ) ) * M_PI / 2;
+		r = fabsf( y );
+	}
+	else if( ( x != 0 ) and ( y == 0 ) )
+	{
+		if( x < 0 )
+		{
+			t = M_PI;
+		}
+		else
+		{
+			t = 0;
+		}
+		r = fabsf( x );
+	}
+	else
+	{
+		r = sqrtf( x * x + y * y );
+		t = atan2f( x, y );
+	}
+}
 
-long fibonacci_recur(long N);
+void polar2xy( float  r,
+			   float  t,
+			   float& x,
+			   float& y )
+{
+	if ( r < 0 )
+	{
+		std::cerr << "Warning: Radius cannot be negative. Setting r = 0.\n";
+		r = 0;
+	}
 
-#endif
+	x = r * cos( t );
+	y = r * sin( t );
+	
+}

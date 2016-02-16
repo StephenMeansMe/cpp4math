@@ -1,5 +1,5 @@
 /*
- * polar2xy.h
+ * complexx.h
  * 
  * Copyright 2016 Stephen <me@stephenmeansme.com>
  * 
@@ -21,9 +21,25 @@
  * 
  */
 
-#ifndef POLAR2XY_H
-#define POLAR2XY_H
+/*!
+ * \file complexx.h
+ * \brief A header file that adds convenient extensions for working with complex numbers.
+ */
 
-void polar2xy(float r, float t, float& x, float& y);
+#ifndef COMPLEXX_H
+#define COMPLEXX_H
+
+#include <complex>
+using namespace std;
+
+/*!
+ * We define C to be an abbreviation for complex<double>.
+ */
+typedef complex<double> C;
+
+/*!
+ * We define i to be a constant equal to sqrt(-1), i.e., C(0.0, 1.0).
+ */
+const C i = C( 0.0, 1.0 );
 
 #endif
