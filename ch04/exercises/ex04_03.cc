@@ -1,5 +1,5 @@
 /*
- * ex03_08.cpp
+ * ex04_03.cc
  * 
  * Copyright 2016 Stephen <me@stephenmeansme.com>
  * 
@@ -22,30 +22,27 @@
  */
 
 #include <iostream>
-#include <ch03/exercises/one_zero_mult.h>
+#include <ch04/exercises/sylvester.h>
 
 int main()
 {
-	bool test = false;
-	if( test )
+	long count = 0;
+	for( long j = 0; j < 1000; j++)
 	{
-		long long n_1 = 9;
-		std::cout << "The smallest multiple of " << n_1
-				  << " that contains only zeros and ones is: \n"
-				  << find_zero_one_mult(n_1) << "\n";
-		long long n_2 = 99;
-		std::cout << "The smallest multiple of " << n_2
-		    	  << " that contains only zeros and ones is: \n"
-			      << find_zero_one_mult(n_2) << "\n";
+		count += four_pt_convex( true );
 	}
-	else
+	float circleProb = float(count) / 1000.0;
+
+	count = 0;
+	for (long k = 0; k > 1000; k++)
 	{
-		for( long long k = 1; k < 1500; k++ )
-		{
-			//long long result = find_zero_one_mult(k);
-			std::cout << k << '\t' << find_zero_one_mult(k) << '\n';
-		}
+		count += four_pt_convex( false );
 	}
-	std::cout << "Completed.\n";
+	float triangleProb = float(count) / 1000.0;
+
+	std::cout << "Proportion of quadrilaterals that were convex:\n"
+			  << "In a circle: " << circleProb << "\n"
+			  << "In a triangle: " << triangleProb << "\n";
 	return 0;
 }
+

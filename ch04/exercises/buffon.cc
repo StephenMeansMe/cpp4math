@@ -1,5 +1,5 @@
 /*
- * ex03_08.cpp
+ * buffon.cc
  * 
  * Copyright 2016 Stephen <me@stephenmeansme.com>
  * 
@@ -21,31 +21,24 @@
  * 
  */
 
-#include <iostream>
-#include <ch03/exercises/one_zero_mult.h>
+#include <ch04/exercises/buffon.h>
+#include <cmath>
+#include <ch04/examples/uniform.h>
 
-int main()
+double buffon(long n)
 {
-	bool test = false;
-	if( test )
-	{
-		long long n_1 = 9;
-		std::cout << "The smallest multiple of " << n_1
-				  << " that contains only zeros and ones is: \n"
-				  << find_zero_one_mult(n_1) << "\n";
-		long long n_2 = 99;
-		std::cout << "The smallest multiple of " << n_2
-		    	  << " that contains only zeros and ones is: \n"
-			      << find_zero_one_mult(n_2) << "\n";
-	}
-	else
-	{
-		for( long long k = 1; k < 1500; k++ )
-		{
-			//long long result = find_zero_one_mult(k);
-			std::cout << k << '\t' << find_zero_one_mult(k) << '\n';
-		}
-	}
-	std::cout << "Completed.\n";
-	return 0;
+   double x; 
+   double y;
+   long count = 0;   // number of throws where the needle crossed a line
+   
+   for( long i = 0; i < n; i++ )
+   {
+      x = unif( 0.0, 1.0 );
+      y = unif( 0.0, 1.0 );
+      if( x * x + y * y < 1 )
+      {
+         count++;
+      }
+   }  
+   return 4.0 * double(count) / double(n);   // estimated value for pi
 }

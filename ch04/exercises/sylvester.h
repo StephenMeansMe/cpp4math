@@ -1,5 +1,5 @@
 /*
- * ex03_08.cpp
+ * sylvester.h
  * 
  * Copyright 2016 Stephen <me@stephenmeansme.com>
  * 
@@ -21,31 +21,17 @@
  * 
  */
 
-#include <iostream>
-#include <ch03/exercises/one_zero_mult.h>
 
-int main()
-{
-	bool test = false;
-	if( test )
-	{
-		long long n_1 = 9;
-		std::cout << "The smallest multiple of " << n_1
-				  << " that contains only zeros and ones is: \n"
-				  << find_zero_one_mult(n_1) << "\n";
-		long long n_2 = 99;
-		std::cout << "The smallest multiple of " << n_2
-		    	  << " that contains only zeros and ones is: \n"
-			      << find_zero_one_mult(n_2) << "\n";
-	}
-	else
-	{
-		for( long long k = 1; k < 1500; k++ )
-		{
-			//long long result = find_zero_one_mult(k);
-			std::cout << k << '\t' << find_zero_one_mult(k) << '\n';
-		}
-	}
-	std::cout << "Completed.\n";
-	return 0;
-}
+#ifndef SYLVESTER_H
+#define SYLVESTER_H
+
+int four_pt_convex( bool circle = true );
+void rcircle( float& x, float& y );
+void rtriangle( float& x, float& y );
+void check_convex( float x1, float y1,
+				   float x2, float y2,
+				   float x3, float y3,
+				   float x4, float y4,
+				   int& isConvex );
+
+#endif  //SYLVESTER_H

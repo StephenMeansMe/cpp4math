@@ -27,7 +27,7 @@
 float zeta2sum_fwd( long N )
 {
 /*! \fn float zeta2sum_fwd
- *  Approximates zeta(2) = pi^2 / 6 by summing reciprocal squares:
+ *  Approximates zeta(2) = pi^2 / 6$@f by summing reciprocal squares:
  *  f(N) = sum_{k=1}^N 1/k^2
  */
 
@@ -44,7 +44,7 @@ float zeta2sum_fwd( long N )
 
 	for( long k = 1; k <= N; k++ )
 	{
-		to_add = float( 1 ) / float( k );
+		to_add = 1.0 / float( k );
 		to_add = to_add * to_add;
 		s += to_add;
 	}
@@ -70,7 +70,7 @@ float zeta2sum_rev( long N )
 
 	for( long k = N; k >= 1; k-- )
 	{
-		to_add = float( 1 ) / float( k );
+		to_add = 1.0 / float( k );
 		to_add = to_add * to_add;
 		s += to_add;
 	}

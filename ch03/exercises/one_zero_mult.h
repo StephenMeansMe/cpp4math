@@ -25,10 +25,14 @@
 #ifndef ONE_ZERO_MULT_H
 #define ONE_ZERO_MULT_H
 
-long one_zero_mult
+long long bin2dec
 (
-		int n
+		long n
+);
+
+long long find_zero_one_mult
+(
+		long long n
 );
 
 #endif
-

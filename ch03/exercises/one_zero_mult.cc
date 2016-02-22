@@ -22,80 +22,37 @@
  */
 
 #include <ch03/exercises/one_zero_mult.h>
-#include <cmath>
-#include <iostream>
 
-static long quick_pow10( int n )
+long long bin2dec( long n )
 {
-	static long pow10[ 10 ] =
+	long long flag;
+	switch( n )
 	{
-		1, 10, 100, 1000, 100000,
-		1000000, 10000000, 100000000, 1000000000, 10000000000
-	};
-
-	return pow10[ n ];
-
+		case 0:
+			flag = 0;
+			break;
+		case 1:
+			flag = 1;
+			break;
+		default:
+			flag = 10 * bin2dec( n / 2 ) + ( n % 2 );
+	}
+	return flag;
 }
 
-static long quick_trinum( int n )
+long long find_zero_one_mult(long long n)
 {
-	static long trinum[ 10 ] =
+	for(long long k = 1; ; k++)
 	{
-		1, 3, 6, 10, 15, 21, 28, 36, 45, 55
-	};
-
-	return trinum[ n ];
-
-}
-
-long long one_zero_mult( long n )
-{
-	/*
-	 * Given a positive integer, returns the smallest multiple with base-10
-	 * representation by the following digit-by-digit procedure:
-	 *    STEP i
-	 *       take 10^i mod n;
-	 *       consider all possible sums mod n of previous powers of 10;
-	 *       if 0 mod n is a possible sum, STOP
-	 *    REPEAT STEP i+1
-	 *
-	 *    SPECIAL CASE:
-	 *    - If the number is divisible by 2 or 5, let r be the largest power
-	 * 		 among those factors, i.e. argmax{2^r | n or 5^r | n}, then the
-	 *       last r digits are all 0, so start with 10^{r+1}
-	 */
-
-	 long      mod = 1;
-	 long long m = 0;
-	 int       i_max = 10;
-	 
-	 int*  ones = new int [ i_max ]; 
-	 int** sums = new int* [ i_max ];
-	       sums[0]    = new int;
-	       sums[0][0] = 1;
-
-	 for ( int i = 1; i < i_max; i++ )
-	 {
-		 sums[ i ] = new int[ quick_trinum( i ) ];
-		 mod       = ( mod * 3 ) % n;
-		 
-		 for( int j = 0; j < quick_trinum( i ); j++ )
-		 {
-			if( j < quick_trinum( i - 1 ) )
-			{
-				sums[ i ][ j ] = sums[ i - 1 ][ j ];
-			} else if( j == quick_trinum( i - 1 ) ) {
-				sums[ i ][ j ] = mod;
-			} else {
-				sums[ i ][ j ] = ( sums[ i - 1 ][ j ] + mod ) % n;
-			}
-		 }
-	 }
-	 
-	 for( int k = i_max - 1; k > 0; k-- )
-	 {
-		 delete[] sums[ k ];
-	 }
-	 
-	 return m;
+		long long m = bin2dec(k);
+		if( m < 0 )
+		{
+			return -1; // overflow without success
+		}
+		if( m % n == 0 )
+		{
+			return m;
+		}
+	}
+	return 0;
 }
