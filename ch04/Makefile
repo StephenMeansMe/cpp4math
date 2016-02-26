@@ -19,7 +19,7 @@ mc_primes: mc_primes.o gcd.o uniform.o
 
 ## CHAPTER 04 EXERCISES
 
-sq_unif.o: exercises/sq_unif.cc exercises/sq_unif.h ../ch04/examples/uniform.h
+sq_unif.o: exercises/sq_unif.cc exercises/sq_unif.h examples/uniform.h
 	g++ -I $(BASE_DIR) $(CPPFLAGS) -c -O exercises/sq_unif.cc
 
 ex04_01.o: exercises/ex04_01.cc exercises/sq_unif.h
@@ -45,3 +45,12 @@ ex04_03.o: exercises/ex04_03.cc exercises/sylvester.h
 
 ex04_03: ex04_03.o sylvester.o uniform.o
 	g++ -I $(BASE_DIR) $(CPPFLAGS) -o ex04_03 -O ex04_03.o sylvester.o uniform.o
+
+point_on_circle.o: exercises/point_on_circle.cc exercises/point_on_circle.h examples/uniform.h
+	g++ -I $(BASE_DIR) $(CPPFLAGS) -c -O exercises/point_on_circle.cc
+
+ex04_04.o: exercises/ex04_04.cc exercises/point_on_circle.h
+	g++ -I $(BASE_DIR) $(CPPFLAGS) -c -O exercises/ex04_04.cc
+
+ex04_04: ex04_04.o point_on_circle.o uniform.o
+	g++ -I $(BASE_DIR) $(CPPFLAGS) -o ex04_04 -O ex04_04.o point_on_circle.o uniform.o

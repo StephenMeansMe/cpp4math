@@ -1,5 +1,5 @@
 /*
- * ex04_03.cc
+ * ex04_04.cc
  * 
  * Copyright 2016 Stephen <me@stephenmeansme.com>
  * 
@@ -21,29 +21,39 @@
  * 
  */
 
+#include <ctime>
 #include <iostream>
-#include <ch04/exercises/sylvester.h>
+#include <ch04/exercises/point_on_circle.h>
 
 int main()
 {
-	long n = 20;
-	long count = 0;
-	for( long j = 0; j < n; j++)
+	clock_t t;
+	
+	long n = 100000000;  // Generating 100 million points
+	double x; double y;
+
+	// Uniform generation method
+	t = clock();
+	for( long i = 0; i < n; i++ )
 	{
-		count += four_pt_convex( true );
+		circ_unif( x, y );
 	}
-	float circleProb = float(count) / float(n);
+	t = clock() - t;
+	std::cout << "Uniform method took "
+			  << float(t)/CLOCKS_PER_SEC
+			  << " seconds.\n";
 
-	//count = 0;
-	//for (long k = 0; k > n; k++)
-	//{
-	//	count += four_pt_convex( false );
-	//}
-	//float triangleProb = float(count) / float(n);
-
-	std::cout << "Proportion of quadrilaterals that were convex:\n"
-			  << "In a circle: " << circleProb << "\n";
-			  //<< "In a triangle: " << triangleProb << "\n";
+	// Rejection method
+	t = clock();
+	for( long j = 0; j < n; j++ )
+	{
+		circ_reject( x, y );
+	}
+	t = clock() - t;
+	std::cout << "Rejection method took "
+			  << float(t)/CLOCKS_PER_SEC
+			  << " seconds.\n";
+	
 	return 0;
 }
 

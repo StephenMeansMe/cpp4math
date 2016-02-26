@@ -23,6 +23,7 @@
 
 #include <ch04/exercises/sylvester.h>
 #include <cmath>
+#include <iostream>
 #include <ch04/examples/uniform.h>
 
 int four_pt_convex( bool circle )
@@ -48,6 +49,11 @@ int four_pt_convex( bool circle )
 		rtriangle(x4, y4);
 		
 	}
+	
+	std::cout << x1 << '\t' << y1 << '\n';
+	std::cout << x2 << '\t' << y2 << '\n';
+	std::cout << x3 << '\t' << y3 << '\n';
+	std::cout << x4 << '\t' << y4 << '\n' << '\n';
 
 	int isConvex;
 	check_convex( x1, y1,

@@ -1,5 +1,5 @@
 /*
- * ex04_03.cc
+ * point_on_circle.cc
  * 
  * Copyright 2016 Stephen <me@stephenmeansme.com>
  * 
@@ -21,29 +21,31 @@
  * 
  */
 
-#include <iostream>
-#include <ch04/exercises/sylvester.h>
 
-int main()
+#include <ch04/exercises/point_on_circle.h>
+#include <cmath>
+#include <ch04/examples/uniform.h>
+
+void circ_reject(double& x, double& y)
 {
-	long n = 20;
-	long count = 0;
-	for( long j = 0; j < n; j++)
-	{
-		count += four_pt_convex( true );
-	}
-	float circleProb = float(count) / float(n);
+	double d;
 
-	//count = 0;
-	//for (long k = 0; k > n; k++)
-	//{
-	//	count += four_pt_convex( false );
-	//}
-	//float triangleProb = float(count) / float(n);
+	do
+	{	// Generate values (x, y) in [0, 1]^2
+		x = unif(0.0, 1.0);
+		y = unif(0.0, 1.0);
+		d = x*x + y*y;
+	} while ( d <= 1 ); // until we get one that satisfies x^2 + y^2 <= 1
+	
+	x /= sqrt( d );  // rescale by sqrt( x^2 + y^2 )
+	y /= sqrt( d );
+}
 
-	std::cout << "Proportion of quadrilaterals that were convex:\n"
-			  << "In a circle: " << circleProb << "\n";
-			  //<< "In a triangle: " << triangleProb << "\n";
-	return 0;
+void circ_unif(double& x, double& y)
+{
+	double t = 2 * M_PI * unif(0.0, 1.0);
+
+	x = cos( t );
+	y = sin( t );
 }
 
