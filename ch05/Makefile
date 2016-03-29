@@ -49,3 +49,8 @@ example05_10: example05_10.o faster_totient.o sieve.o
 
 ## CHAPTER 05 EXERCISES
 
+ex05_01.o: exercises/ex05_01.cc examples/faster_totient.h examples/sieve.h
+	g++ -I $(BASE_DIR) $(CPPFLAGS) -c -O exercises/ex05_01.cc
+
+ex05_01: ex05_01.o faster_totient.o sieve.o
+	g++ $(LDFLAGS) -o ex05_01 -O ex05_01.o faster_totient.o sieve.o
