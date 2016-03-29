@@ -23,8 +23,8 @@
 
 
 #include <iostream>
-#include "uniform.h"
-#include "base/ch03/examples/gcd.h"
+#include <ch04/examples/uniform.h>
+#include <ch03/examples/gcd.h>
 
 /**
  * This main generates many pairs of values from the set {1, 2,..., n}
@@ -36,7 +36,8 @@ int main()
 {
 	long n;       // max el`t in the set {1, 2,..., n}
 	long reps;    // number of times we perform the experiment
-	long a, b;    // values chosen from {1, 2,..., n}
+	long a;
+	long b;       // values chosen from {1, 2,..., n}
 	long count;   // number of pairs that are relatively prime
 
 	count = 0;
@@ -47,18 +48,17 @@ int main()
 	std::cout << "Enter the number of pairs to sample --> ";
 	std::cin >> reps;
 
-	for (long k = 1; k <= reps; k++)
+	for( long k = 1; k <= reps; k++ )
 	{
-		a = unif(n);
-		b = unif(n);
-		if (gcd(a,b) == 1)
+		a = unif( n );
+		b = unif( n );
+		if ( gcd( a, b ) == 1 )
 		{
 			++count;
 		}
 	}
 
-	std::cout << count / (double)reps << "\n";
+	std::cout << count / double( reps ) << "\n";
 	
 	return 0;
 }
-

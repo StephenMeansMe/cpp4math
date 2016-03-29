@@ -21,21 +21,21 @@
  * 
  */
 
-
+#include <cmath>
 #include <iostream>
-#include "zeta2sums.h"
+#include <ch03/exercises/zeta2sums.h>
 
-int main(int argc, char **argv)
+int main()
 {
-	long N = 1000000;
-	float fsum = zeta2sum_fwd(N);
-	float rsum = zeta2sum_rev(N);
-	float zeta2approx = 1.6449340668482264365;
+	long  N = 1000000;
+	float fsum = zeta2sum_fwd( N );
+	float rsum = zeta2sum_rev( N );
+	const float ZETA2 = M_PI * M_PI / 6.0 ;
 
 	std::cout << "The approximate value of pi^2 / 6 from forward sums is: "
-			  << fsum << ", with an error of " << fsum - zeta2approx << "\n";
+			  << fsum << ", with an error of " << fsum - ZETA2 << "\n";
 	std::cout << "The approximate value of pi^2 / 6 from backward sums is: "
-			  << rsum << ", with an error of " << rsum - zeta2approx << "\n";
+			  << rsum << ", with an error of " << rsum - ZETA2 << "\n";
 	return 0;
 }
 

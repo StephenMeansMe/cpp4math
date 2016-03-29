@@ -1,5 +1,5 @@
 /*
- * polar2xy.cc
+ * sq_unif.h
  * 
  * Copyright 2016 Stephen <me@stephenmeansme.com>
  * 
@@ -21,18 +21,9 @@
  * 
  */
 
-#include "polar2xy.h"
-#include <iostream>
-#include <cmath>
+#ifndef SQ_UNIF_H
+#define SQ_UNIF_H
 
-void polar2xy(float r, float t, float& x, float& y)
-{
-	if (r < 0) {
-		std::cerr << "Warning: Radius cannot be negative. Setting r = 0.\n";
-		r = 0;
-	}
+double sq_unif();
 
-	x = r * cos(t);
-	y = r * sin(t);
-	
-}
+#endif

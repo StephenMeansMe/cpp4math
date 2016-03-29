@@ -1,5 +1,5 @@
 /*
- * fibonacci_iter.h
+ * ex04_04.cc
  * 
  * Copyright 2016 Stephen <me@stephenmeansme.com>
  * 
@@ -21,17 +21,39 @@
  * 
  */
 
-#ifndef FIBONACCI_ITER_H
-#define FIBONACCI_ITER_H
+#include <ctime>
+#include <iostream>
+#include <ch04/exercises/point_on_circle.h>
 
-/**
- * Generates the Nth Fibonacci number iteratively:
- * F_n = F_n-1 + F_n-2 for n >= 2, with F_0 = F_1 = 1.
- *
- * @param N the index of the desired Fibonacci number.
- * @return The Nth number in the Fibonacci sequence.
- */
+int main()
+{
+	clock_t t;
+	
+	long n = 100000000;  // Generating 100 million points
+	double x; double y;
 
-long fibonacci_iter(long N);
+	// Uniform generation method
+	t = clock();
+	for( long i = 0; i < n; i++ )
+	{
+		circ_unif( x, y );
+	}
+	t = clock() - t;
+	std::cout << "Uniform method took "
+			  << float(t)/CLOCKS_PER_SEC
+			  << " seconds.\n";
 
-#endif
+	// Rejection method
+	t = clock();
+	for( long j = 0; j < n; j++ )
+	{
+		circ_reject( x, y );
+	}
+	t = clock() - t;
+	std::cout << "Rejection method took "
+			  << float(t)/CLOCKS_PER_SEC
+			  << " seconds.\n";
+	
+	return 0;
+}
+

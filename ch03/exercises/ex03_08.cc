@@ -21,20 +21,31 @@
  * 
  */
 
-
 #include <iostream>
-#include "one_zero_mult.h"
+#include <ch03/exercises/one_zero_mult.h>
 
-int main(int argc, char **argv)
+int main()
 {
-	int n_1 = 9;
-	std::cout << "The smallest multiple of " << n_1
-			  << " that contains only zeros and ones is: \n"
-			  << one_zero_mult(n_1) << "\n";
-	int n_2 = 99;
-	std::cout << "The smallest multiple of " << n_2
-			  << " that contains only zeros and ones is: \n"
-			  << one_zero_mult(n_2) << "\n";
+	bool test = false;
+	if( test )
+	{
+		long long n_1 = 9;
+		std::cout << "The smallest multiple of " << n_1
+				  << " that contains only zeros and ones is: \n"
+				  << find_zero_one_mult(n_1) << "\n";
+		long long n_2 = 99;
+		std::cout << "The smallest multiple of " << n_2
+		    	  << " that contains only zeros and ones is: \n"
+			      << find_zero_one_mult(n_2) << "\n";
+	}
+	else
+	{
+		for( long long k = 1; k < 1500; k++ )
+		{
+			//long long result = find_zero_one_mult(k);
+			std::cout << k << '\t' << find_zero_one_mult(k) << '\n';
+		}
+	}
+	std::cout << "Completed.\n";
 	return 0;
 }
-

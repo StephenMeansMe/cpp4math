@@ -1,5 +1,5 @@
 /*
- * xy2polar.cc
+ * polar_conv.cc
  * 
  * Copyright 2016 Stephen <me@stephenmeansme.com>
  * 
@@ -21,26 +21,56 @@
  * 
  */
 
-#include "xy2polar.h"
+#include <ch03/exercises/polar_conv.h>
+#include <iostream>
 #include <cmath>
 
-void xy2polar(float x, float y, float& r, float& t)
+void xy2polar( float  x,
+			   float  y,
+			   float& r,
+		       float& t )
 {
-	if ((x == 0) and (y == 0)) {
+	if( ( x == 0 ) and ( y == 0 ) )
+	{
 		r = 0;
 		t = 0;
-	} else if ((x == 0) and (y != 0)) {
-		t = ((y > 0) - (y < 0)) * M_PI / 2;
-		r = fabsf(y);
-	} else if ((x != 0) and (y == 0)) {
-		if (x < 0) {
+	}
+	else if( ( x == 0 ) and ( y != 0 ) )
+	{
+		t = ( ( y > 0 ) - ( y < 0 ) ) * M_PI / 2;
+		r = fabsf( y );
+	}
+	else if( ( x != 0 ) and ( y == 0 ) )
+	{
+		if( x < 0 )
+		{
 			t = M_PI;
-		} else {
+		}
+		else
+		{
 			t = 0;
 		}
-		r = fabsf(x);
-	} else {
-		r = sqrtf(x * x + y * y);
-		t = atan2f(x, y);
+		r = fabsf( x );
 	}
+	else
+	{
+		r = sqrtf( x * x + y * y );
+		t = atan2f( x, y );
+	}
+}
+
+void polar2xy( float  r,
+			   float  t,
+			   float& x,
+			   float& y )
+{
+	if ( r < 0 )
+	{
+		std::cerr << "Warning: Radius cannot be negative. Setting r = 0.\n";
+		r = 0;
+	}
+
+	x = r * cos( t );
+	y = r * sin( t );
+	
 }

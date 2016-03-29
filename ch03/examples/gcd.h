@@ -21,19 +21,37 @@
  * 
  */
 
-
 #ifndef GCD_H
 #define GCD_H
 
-/**
- * Calculate the greatest common divisor of two integers.
- * Note: gcd(0,0) will return 0 and print an error message.
- * @param a the first integer
- * @param b the second integer
- * @return the greatest common divisor of a and b
+/*! \fn long gcd(long a, long b)
+ *  \brief Calculate the greatest common divisor of two integers.
+ *
+ *  \warning gcd(0,0) will return 0 and print an error message.
+ *  \return the greatest common divisor of a and b
  */
 
-long gcd(long a, long b);
-long gcd(long a, long b, long& x, long& y);
+long gcd
+(
+		long a, //! \param a the first integer
+		long b  //! \param b the second integer
+);
+
+/*! \fn long gcd(long a, long b, long& x, long& y)
+ *  \brief An extended procedure for calculating the greatest common divisor.
+ *
+ *  Calculates the gcd of a and b, and finds integers x and y such that
+ *  a * x + b * y = gcd(a, b) 
+ *
+ * \return the greatest common divisor of a and b
+ */
+
+long gcd
+(
+		long  a, //! \param a the first integer
+		long  b, //! \param b the second integer
+		long& x, //! \param x the coefficient of a (to be determined)
+		long& y  //! \param y the coefficient of b (to be determined)
+);
 
 #endif

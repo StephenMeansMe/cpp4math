@@ -1,5 +1,5 @@
 /*
- * fibonacci_recur.cc
+ * buffon.cc
  * 
  * Copyright 2016 Stephen <me@stephenmeansme.com>
  * 
@@ -21,16 +21,24 @@
  * 
  */
 
-#include "fibonacci_recur.h"
-#include <iostream>
+#include <ch04/exercises/buffon.h>
+#include <cmath>
+#include <ch04/examples/uniform.h>
 
-long fibonacci_recur(long N) {
-	if (N < 0) {
-		std::cerr << "Warning: Index was negative!\n";
-		return -1;
-	} else if ((N == 0) or (N == 1)) {
-		return 1;
-	} else {
-		return fibonacci_recur(N - 1) + fibonacci_recur(N - 2);
-	}
+double buffon(long n)
+{
+   double x; 
+   double y;
+   long count = 0;   // number of throws where the needle crossed a line
+   
+   for( long i = 0; i < n; i++ )
+   {
+      x = unif( 0.0, 1.0 );
+      y = unif( 0.0, 1.0 );
+      if( x * x + y * y < 1 )
+      {
+         count++;
+      }
+   }  
+   return 4.0 * double(count) / double(n);   // estimated value for pi
 }

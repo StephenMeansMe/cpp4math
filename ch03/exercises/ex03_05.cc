@@ -21,18 +21,17 @@
  * 
  */
 
-#include "src/fibonacci_iter.h"
-#include "src/fibonacci_recur.h"
 #include <iostream>
+#include <ch03/exercises/fib_procs.h>
 
-int main(int argc, char **argv)
+int main()
 {
-	std::cout << "F_20:" << "\t (r) " << fibonacci_recur(20)
-						 << "\t (i) " << fibonacci_iter(20) << "\n";
-	std::cout << "F_30:" << "\t (r) " << fibonacci_recur(30)
-						 << "\t (i) " << fibonacci_iter(30) << "\n";
-	std::cout << "F_40:" << "\t (r) " << fibonacci_recur(40)
-						 << "\t (i) " << fibonacci_iter(40) << "\n";
+	std::cout << "F_20:" << "\t (r) " << fibonacci_recur( 20 )
+						 << "\t (i) " << fibonacci_iter( 20 ) << "\n";
+	std::cout << "F_30:" << "\t (r) " << fibonacci_recur( 30 )
+						 << "\t (i) " << fibonacci_iter( 30 ) << "\n";
+	std::cout << "F_40:" << "\t (r) " << fibonacci_recur( 40 )
+						 << "\t (i) " << fibonacci_iter( 40 ) << "\n";
 	return 0;
 }
 

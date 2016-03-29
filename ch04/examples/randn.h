@@ -24,7 +24,7 @@
 #ifndef RANDN_H
 #define RANDN_H
 
-#include "uniform.h"
+#include <ch04/examples/uniform.h>
 
 double randn();
 

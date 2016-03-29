@@ -22,11 +22,12 @@
  */
 
 #include <iostream>
-#include "gcd.h"
+#include <ch03/examples/gcd.h>
 
-int main(int argc, char **argv)
+int main()
 {
-	long a, b;
+	long a;
+	long b;
 
 	std::cout << "Enter the first number  -> ";
 	std::cin >> a;
@@ -34,7 +35,7 @@ int main(int argc, char **argv)
 	std::cin >> b;
 
 	std::cout << "The gcd of " << a << " and " << b << " is "
-			  << gcd(a, b) << ".\n";
+			  << gcd( a, b ) << ".\n";
 	return 0;
 }
 

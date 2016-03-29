@@ -21,19 +21,19 @@
  * 
  */
 
-#include "zeta2sums.h"
+#include <ch03/exercises/zeta2sums.h>
 #include <iostream>
 
-float zeta2sum_fwd(long N)
+float zeta2sum_fwd( long N )
 {
-/**
- * Approximates zeta(2) = pi^2 / 6 by summing reciprocal squares:
- * f(N) = sum_{k=1}^N 1/k^2
+/*! \fn float zeta2sum_fwd
+ *  Approximates zeta(2) = pi^2 / 6$@f by summing reciprocal squares:
+ *  f(N) = sum_{k=1}^N 1/k^2
  */
 
 	std::cout << N << "\n";
 
-	if (N < 1)
+	if( N < 1 )
 	{
 		std::cerr << "Error: N must be a positive integer.";
 		return 0.0;
@@ -42,9 +42,9 @@ float zeta2sum_fwd(long N)
 	float s = 0.0;
 	float to_add;
 
-	for (long k = 1; k <= N; k++)
+	for( long k = 1; k <= N; k++ )
 	{
-		to_add = float(1) / float(k);
+		to_add = 1.0 / float( k );
 		to_add = to_add * to_add;
 		s += to_add;
 	}
@@ -52,14 +52,14 @@ float zeta2sum_fwd(long N)
 	return s;
 }
 
-float zeta2sum_rev(long N)
+float zeta2sum_rev( long N )
 {
-/**
- * Approximates zeta(2) = pi^2 / 6 by summing reciprocal squares:
- * f(N) = sum_{k=N}^1 1/k^2 <-- Note the summation is backwards
+/*! \fn float zeta2sum_rev
+ *  Approximates zeta(2) = pi^2 / 6 by summing reciprocal squares:
+ *  f(N) = sum_{k=N}^1 1/k^2 <-- Note the summation is backwards
  */
 
-	if (N < 1)
+	if( N < 1 )
 	{
 		std::cerr << "Error: N must be a positive integer.";
 		return 0.0;
@@ -68,9 +68,9 @@ float zeta2sum_rev(long N)
 	float s = 0.0;
 	float to_add;
 
-	for (long k = N; k >= 1; k--)
+	for( long k = N; k >= 1; k-- )
 	{
-		to_add = float(1) / float(k);
+		to_add = 1.0 / float( k );
 		to_add = to_add * to_add;
 		s += to_add;
 	}

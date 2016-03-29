@@ -21,36 +21,36 @@
  * 
  */
 
-#include "uniform.h"
+#include <ch04/examples/uniform.h>
 #include <cstdlib>
 #include <ctime>
 #include <cmath>
 
 double unif()
 {
-	return std::rand() / (double)RAND_MAX;
+	return std::rand() / double( RAND_MAX );
 }
 
-double unif(double a, double b)
+double unif( double a, double b )
 {
-	return (b - a) * unif() + a;
+	return ( b - a ) * unif() + a;
 }
 
-long unif(long a)
+long unif( long a )
 {
-	if (a < 0)
+	if ( a < 0 )
 	{
 		a = -a;
 	}
-	if (a == 0)
+	if ( a == 0 )
 	{
 		return 0;
 	} else {
-		return (long)(unif() * a) + 1;
+		return long( ( unif() * a ) + 1 );
 	}
 }
 
 void seed()
 {
-	srand(time(0));
+	srand( time( 0 ) );
 }

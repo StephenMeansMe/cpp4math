@@ -1,5 +1,5 @@
 /*
- * ex03_07.h
+ * random_walk.cc
  * 
  * Copyright 2016 Stephen <me@stephenmeansme.com>
  * 
@@ -21,9 +21,49 @@
  * 
  */
 
-#ifndef XY2POLAR_H
-#define XY2POLAR_H
+#include <ch04/exercises/random_walk.h>
+#include <cassert>
+#include <ch04/examples/uniform.h>
 
-void xy2polar(float x, float y, float& r, float& t);
+RandomWalk::RandomWalk( long start, double plusProb ) {
 
-#endif
+	position  = start;
+	assert( ( plusProb >= 0.0 ) and ( plusProb <= 1.0 ) ); 
+	mPlusProb = plusProb;
+	
+}
+
+RandomWalk::RandomWalk( const RandomWalk& otherWalk ) {
+
+	position  = otherWalk.position;
+	mPlusProb = otherWalk.GetProb();
+
+}
+
+long RandomWalk::Iterate() {
+
+	if( unif(0.0, 1.0) < mPlusProb ) {
+
+		++position;
+
+	} else {
+
+		--position;
+
+	}
+	return position;
+
+}
+
+void RandomWalk::SetProb( double prob ) {
+
+	assert( ( prob >= 0.0 ) and ( prob <= 1.0 ) );
+	mPlusProb = prob;
+
+}
+
+double RandomWalk::GetProb() const {
+
+	return mPlusProb;
+
+}

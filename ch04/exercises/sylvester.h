@@ -1,5 +1,5 @@
 /*
- * fibonacci_iter.h
+ * sylvester.h
  * 
  * Copyright 2016 Stephen <me@stephenmeansme.com>
  * 
@@ -21,17 +21,17 @@
  * 
  */
 
-#ifndef FIBONACCI_RECUR_H
-#define FIBONACCI_RECUR_H
 
-/**
- * Generates the Nth Fibonacci number using recursion:
- * F_n = F_n-1 + F_n-2 for n >= 2, with F_0 = F_1 = 1.
- *
- * @param N the index of the desired Fibonacci number.
- * @return The Nth number in the Fibonacci sequence.
- */
+#ifndef SYLVESTER_H
+#define SYLVESTER_H
 
-long fibonacci_recur(long N);
+int four_pt_convex( bool circle = true );
+void rcircle( float& x, float& y );
+void rtriangle( float& x, float& y );
+void check_convex( float x1, float y1,
+				   float x2, float y2,
+				   float x3, float y3,
+				   float x4, float y4,
+				   int& isConvex );
 
-#endif
+#endif  //SYLVESTER_H

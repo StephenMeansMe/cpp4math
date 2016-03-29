@@ -1,5 +1,5 @@
 /*
- * fibonacci_iter.cc
+ * updown.cc
  * 
  * Copyright 2016 Stephen <me@stephenmeansme.com>
  * 
@@ -21,25 +21,27 @@
  * 
  */
 
-#include "fibonacci_iter.h"
+#include <ch04/exercises/updown.h>
 #include <iostream>
 
-long fibonacci_iter(long N) {
-	if (N < 0) {
-		std::cerr << "Warning: Index was negative!\n";
-		return -1;
-	} else if ((N == 0) or (N == 1)) {
-		return 1;
-	} else {
-		long* fibs = new long [3];
-		fibs[0] = 1;
-		fibs[1] = 1;
-		fibs[2] = 0;
-		for (long i = 2; i <= N; i++) {
-			fibs[2] = fibs[1] + fibs[0];  // F_n = F_n-1 + F_n-2
-			fibs[0] = fibs[1];			  // Shift the old Fibonacci values
-			fibs[1] = fibs[2];			  // to the first two array entries
-		}
-		return fibs[2];
-	}
+int updown( int shift ) {
+
+	static int value = 0;
+	//std::cout << value << " " << shift << "\n";
+	value = value + shift;
+	//std::cout << value << "\n";
+	return value;
+
+}
+
+int up() {
+
+	return updown( 1 );
+
+}
+
+int down() {
+
+	return updown( -1 );
+
 }

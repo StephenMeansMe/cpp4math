@@ -21,15 +21,14 @@
  * 
  */
 
-
 #include <iostream>
-#include "src/gcd.h"
+#include <ch03/examples/gcd.h>
 
 /**
  * Find the probability that two integers in {1..n} are relatively prime.
  */
 
-int main(int argc, char **argv)
+int main()
 {
 	long n;
 	std::cout << "Enter n --> ";
@@ -37,9 +36,12 @@ int main(int argc, char **argv)
 
 	long count = 0;
 
-	for (long a = 1; a <= n; a++) {
-		for (long b = a + 1; b <= n; b++) {
-			if (gcd(a, b) == 1) {
+	for( long a = 1; a <= n; a++ )
+	{
+		for( long b = a + 1; b <= n; b++)
+		{
+			if( gcd( a, b ) == 1 )
+			{
 				count++;
 			}
 		}
@@ -47,7 +49,6 @@ int main(int argc, char **argv)
 
 	count = 2 * count + 1;
 
-	std::cout << double(count) / (double(n) * double(n)) << "\n";
+	std::cout << double( count ) / ( double( n ) * double( n ) ) << "\n";
 	return 0;
 }
-

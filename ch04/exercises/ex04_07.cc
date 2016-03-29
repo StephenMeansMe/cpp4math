@@ -1,5 +1,5 @@
 /*
- * polar2xy.h
+ * ex04_07.cc
  * 
  * Copyright 2016 Stephen <me@stephenmeansme.com>
  * 
@@ -21,9 +21,18 @@
  * 
  */
 
-#ifndef POLAR2XY_H
-#define POLAR2XY_H
+#include <iostream>
+#include <ch04/exercises/updown.h>
 
-void polar2xy(float r, float t, float& x, float& y);
+int main(int argc, char **argv)
+{
+	std::cout << up() << " ";
+	std::cout << up() << " ";
+	std::cout << up() << " ";
+	std::cout << down() << " ";
+	std::cout << up() << " ";
+	std::cout << down() << "\n";
+	return 0;
+	
+}
 
-#endif
